@@ -7,6 +7,7 @@ import plotly.graph_objects as go
 from colorama import Fore, Style
 from typing import Dict
 import streamlit as st
+from transformers import AutoTokenizer
 
 # Load pre-trained RoBERTa-based sentiment analysis model from Hugging Face
 classifier = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment")
@@ -20,7 +21,6 @@ def extract_video_id(youtube_link):
     else:
         return None
 
-from transformers import AutoTokenizer
 
 # Load tokenizer
 tokenizer = AutoTokenizer.from_pretrained("cardiffnlp/twitter-roberta-base-sentiment")
@@ -75,7 +75,6 @@ def analyze_sentiment(csv_file):
     }
 
     return results
-
 
 
 def bar_chart(csv_file: str) -> None:
